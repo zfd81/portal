@@ -62,7 +62,7 @@
 <script>
 export default {
   name: "Login",
-  data: function() {
+  data() {
     return {
       ruleForm: {},
       rules: {

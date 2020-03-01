@@ -8,7 +8,7 @@
 export default {
   name: "App",
   created: function() {
-    this.$router.push("/");
+    this.$router.push("/prescription");
   }
 };
 </script>

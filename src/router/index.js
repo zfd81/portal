@@ -22,13 +22,22 @@ const routes = [
     component: Login
   },
   {
-    path: "/",
+    path: "/p",
     name: "Home",
     meta: {
-      requireAuth: true,
+      requireAuth: false,
       title: "portal"
     },
     component: resolve => require(["@/views/Home"], resolve)
+  },
+  {
+    path: "/prescription",
+    name: "Prescription",
+    meta: {
+      requireAuth: false,
+      title: "处方"
+    },
+    component: resolve => require(["@/views/prescription/Index"], resolve)
   },
   {
     path: "/about",
