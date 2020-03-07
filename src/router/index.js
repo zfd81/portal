@@ -25,7 +25,7 @@ const routes = [
     path: "/p",
     name: "Home",
     meta: {
-      requireAuth: false,
+      requireAuth: true,
       title: "portal"
     },
     component: resolve => require(["@/views/Home"], resolve)
@@ -34,7 +34,7 @@ const routes = [
     path: "/prescription",
     name: "Prescription",
     meta: {
-      requireAuth: false,
+      requireAuth: true,
       title: "处方"
     },
     component: resolve => require(["@/views/prescription/Index"], resolve)
@@ -42,6 +42,10 @@ const routes = [
   {
     path: "/about",
     name: "About",
+    meta: {
+      requireAuth: true,
+      title: "处方"
+    },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
@@ -56,7 +60,9 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
+  console.log("==================");
   window.document.title = to.meta.title;
+  debugger;
   if (to.matched.some(record => record.meta.requireAuth)) {
     if (to.name == "Login") {
       next();

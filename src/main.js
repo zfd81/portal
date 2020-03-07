@@ -6,6 +6,7 @@ import router from "./router";
 import store from "./store";
 import Axios from "axios";
 import qs from "qs";
+import util from "./util";
 
 Vue.config.productionTip = false;
 
@@ -54,7 +55,7 @@ Axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
-
+Vue.use(util);
 new Vue({
   router,
   store,

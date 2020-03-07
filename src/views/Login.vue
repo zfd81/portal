@@ -99,14 +99,7 @@ export default {
                     deptName: response.data.DepartmentId
                   }
                 });
-                debugger;
-                let redirect = decodeURIComponent(
-                  this.$route.query.redirect || "/"
-                );
-                this.$router.push("/");
-                this.$router.push({
-                  path: "/"
-                });
+                this.$router.push("/prescription");
               } else if ((response.status = 204)) {
                 this.$message.error("用户名或密码错误！");
               }
