@@ -6,150 +6,200 @@
           门诊处方
         </h2>
       </div>
-      <div style="text-align: right">处方编号：{{ id | formatDateTime }}</div>
+      <el-row>
+        <el-col :span="12" style="font-size: 18px">
+          中医
+        </el-col>
+        <el-col :span="12">
+          <div style="text-align: right;font-size: 18px">
+            处方编号：{{ id | formatDateTime }}
+          </div>
+        </el-col>
+      </el-row>
       <div class="box-table">
-        <el-row>
-          <el-col :span="3">
+        <el-row class="el-row-1">
+          <el-col :span="3" class="el-col-1">
             <div class="grid-content grid-label">
               <h3 style="margin-top: 0px">姓名</h3>
             </div>
           </el-col>
-          <el-col :span="5">
+          <el-col :span="5" class="el-col-1">
             <div class="grid-content">
-              <el-input v-model="input" placeholder="请输入姓名"></el-input>
+              <el-input
+                v-model="ruleForm.name"
+                placeholder="请输入姓名"
+              ></el-input>
             </div>
           </el-col>
-          <el-col :span="3">
+          <el-col :span="3" class="el-col-1">
             <div class="grid-content grid-label">
               <h3 style="margin-top: 0px">性别</h3>
             </div>
           </el-col>
-          <el-col :span="5">
+          <el-col :span="5" class="el-col-1">
             <div class="grid-content">
-              <el-select v-model="value" placeholder="请选择性别">
+              <el-select v-model="ruleForm.sex" placeholder="请选择性别">
                 <el-option label="男" value="男"></el-option>
                 <el-option label="女" value="女"></el-option>
               </el-select>
             </div>
           </el-col>
-          <el-col :span="3">
+          <el-col :span="3" class="el-col-1">
             <div class="grid-content grid-label">
               <h3 style="margin-top: 0px">年龄</h3>
             </div>
           </el-col>
-          <el-col :span="5">
+          <el-col :span="5" class="el-col-1">
             <div class="grid-content">
-              <el-input v-model="input" placeholder="请输入年龄"></el-input>
+              <el-input
+                v-model="ruleForm.age"
+                placeholder="请输入年龄"
+              ></el-input>
             </div>
           </el-col>
         </el-row>
-        <el-row>
-          <el-col :span="3">
+        <el-row class="el-row-1">
+          <el-col :span="3" class="el-col-1">
             <div class="grid-content grid-label">
               <h3 style="margin-top: 0px">职业</h3>
             </div>
           </el-col>
-          <el-col :span="5">
+          <el-col :span="5" class="el-col-1">
             <div class="grid-content">
-              <el-select v-model="value" placeholder="请选择职业">
-                <el-option label="男" value="男"></el-option>
-                <el-option label="女" value="女"></el-option>
+              <el-select v-model="ruleForm.occ" placeholder="请选择职业">
+                <el-option
+                  v-for="item in occs"
+                  :key="item.code"
+                  :label="item.name"
+                  :value="item.code"
+                >
+                </el-option>
               </el-select>
             </div>
           </el-col>
-          <el-col :span="3">
+          <el-col :span="3" class="el-col-1">
             <div class="grid-content grid-label">
               <h3 style="margin-top: 0px">电话</h3>
             </div>
           </el-col>
-          <el-col :span="13">
+          <el-col :span="13" class="el-col-1">
             <div class="grid-content">
-              <el-input v-model="input" placeholder="请输入电话"></el-input>
+              <el-input
+                v-model="ruleForm.number"
+                placeholder="请输入电话"
+              ></el-input>
             </div>
           </el-col>
         </el-row>
-        <el-row>
-          <el-col :span="3">
+        <el-row class="el-row-1">
+          <el-col :span="3" class="el-col-1">
             <div class="grid-content grid-label">
               <h3 style="margin-top: 0px">住址</h3>
             </div>
           </el-col>
-          <el-col :span="16">
+          <el-col :span="17" class="el-col-1">
             <div class="grid-content">
-              <el-input v-model="input" placeholder="请输入住址"></el-input>
+              <el-input
+                v-model="ruleForm.address"
+                placeholder="请输入住址"
+              ></el-input>
             </div>
           </el-col>
-          <el-col :span="5">
+          <el-col :span="4" class="el-col-1">
             <div class="grid-content grid-label">
               <el-button
                 @click="showDialog(1)"
-                type="primary"
-                size="medium"
-                plain
-              >
-                辩证
-              </el-button>
-              <el-button
-                @click="drawer = true"
                 type="success"
                 size="medium"
                 plain
+                style="width: 110px"
               >
-                散剂
+                脏腑辨证
               </el-button>
             </div>
           </el-col>
         </el-row>
-        <el-row>
-          <el-col :span="24">
+        <el-row class="el-row-1">
+          <el-col :span="24" class="el-col-1">
             <div class="grid-content grid-text">
-              <el-divider content-position="left"><h3>证机概要</h3></el-divider>
+              <el-divider content-position="left">
+                <h3>证机概要</h3>
+              </el-divider>
               <span>{{ selectSymptomOutLine }}</span>
-              <el-divider content-position="left"><h3>治疗法则</h3></el-divider>
+              <el-divider content-position="left">
+                <h3>治疗法则</h3>
+              </el-divider>
               <span>{{ selectSymptomTherapy }}</span>
-              <el-divider content-position="left"><h3>处方用药</h3></el-divider>
+              <el-divider content-position="left">
+                <h3>处方用药</h3>
+              </el-divider>
               <span>{{ selectSymptomDrugDesc }}</span>
-              <el-divider content-position="left"><h3>服药方法</h3></el-divider>
+              <el-divider content-position="left">
+                <h3>服药方法</h3>
+              </el-divider>
               <span>{{ selectSymptomTakingMethod }}</span>
             </div>
           </el-col>
         </el-row>
-        <el-row>
-          <el-col :span="3">
+        <el-row class="el-row-1">
+          <el-col :span="3" class="el-col-1">
             <div class="grid-content grid-label">
               <h3 style="margin-top: 0px">服药</h3>
             </div>
           </el-col>
-          <el-col :span="5">
+          <el-col :span="5" class="el-col-1">
             <div class="grid-content">
-              <el-select v-model="value" placeholder="请选择服药天数">
-                <el-option label="1付" value="1"></el-option>
-                <el-option label="2付" value="2"></el-option>
-                <el-option label="3付" value="3"></el-option>
-                <el-option label="5付" value="5"></el-option>
-                <el-option label="7付" value="7"></el-option>
-                <el-option label="10付" value="10"></el-option>
-                <el-option label="15付" value="15"></el-option>
+              <el-select v-model="ruleForm.dose" placeholder="请选择服药天数">
+                <el-option
+                  v-for="item in doses"
+                  :key="item.code"
+                  :label="item.name"
+                  :value="item.code"
+                >
+                </el-option>
               </el-select>
             </div>
           </el-col>
-          <el-col :span="11">
+          <el-col :span="3" class="el-col-1">
+            <div class="grid-content grid-label">
+              <h3 style="margin-top: 0px">调剂</h3>
+            </div>
+          </el-col>
+          <el-col :span="4" class="el-col-1">
+            <div class="grid-content">
+              <el-select
+                v-model="ruleForm.machining"
+                placeholder="请选择调剂方式"
+              >
+                <el-option
+                  v-for="item in machinings"
+                  :key="item.code"
+                  :label="item.name"
+                  :value="item.code"
+                >
+                </el-option>
+              </el-select>
+            </div>
+          </el-col>
+          <el-col :span="5" class="el-col-1">
             <div class="grid-content grid-label">
               <h3 style="margin-top: 0px" v-on:click="showAlert">
-                医生：XXX
+                医师：{{ userName }}
               </h3>
             </div>
           </el-col>
-          <el-col :span="5">
+          <el-col :span="4" class="el-col-1">
             <div class="grid-content grid-label">
-              <el-button type="danger" size="medium" style="width: 120px">
-                保存
+              <el-button type="danger" size="medium" style="width: 110px">
+                保存处方
               </el-button>
             </div>
           </el-col>
         </el-row>
       </div>
-      <span style="font-size: 23px" v-show="alertVisible">{{ price }}</span>
+      <div style="font-size: 23px;text-align: right" v-show="alertVisible">
+        {{ price }}
+      </div>
     </el-card>
     <el-dialog
       title="请选择主症"
@@ -198,9 +248,21 @@ export default {
   name: "Prescription",
   data() {
     return {
+      occs: [], //职业
+      doses: [], //剂量
+      machinings: [], //加工模式
       id: new Date(),
-      input: "",
-      value: "",
+      ruleForm: {
+        name: "",
+        sex: "",
+        age: "",
+        occ: "",
+        number: "",
+        address: "",
+        symptom: "",
+        dose: "",
+        machining: ""
+      },
       symptoms: [],
       symptomItems: [],
       selectSymptomId: "", //症状编码
@@ -233,6 +295,32 @@ export default {
     }
   },
   methods: {
+    init() {
+      this.$axios
+        .get("/p/tcm/dim/occ")
+        .then(response => {
+          this.occs = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      this.$axios
+        .get("/p/tcm/dim/dose")
+        .then(response => {
+          this.doses = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+      this.$axios
+        .get("/p/tcm/dim/mm")
+        .then(response => {
+          this.machinings = response.data;
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    },
     showDialog(flag) {
       if (flag == 1) {
         this.$axios
@@ -306,6 +394,14 @@ export default {
           console.log(error);
         });
     }
+  },
+  computed: {
+    userName: function() {
+      return this.$store.state.user.name;
+    }
+  },
+  created: function() {
+    this.init();
   }
 };
 </script>
@@ -314,7 +410,7 @@ export default {
 .box-card {
   margin-left: auto;
   margin-right: auto;
-  width: 800px;
+  width: 850px;
   padding: 0px 10px 10px 10px;
 }
 .box-table {
@@ -322,11 +418,11 @@ export default {
   border-width: 1px 0px 0px 1px;
   cellspacing: 0px;
 }
-.el-row {
+.el-row-1 {
   margin: 0px;
   width: 100%;
 }
-.el-col {
+.el-col-1 {
   border: solid #2d3e50;
   border-width: 0px 1px 1px 0px;
   min-height: 40px;
