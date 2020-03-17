@@ -11,21 +11,9 @@
     </div>
     <div class="form_div">
       <div style="text-align: center;  font-size: 18px;">用户登录</div>
-      <el-form
-        :model="ruleForm"
-        :rules="rules"
-        ref="ruleForm"
-        label-position="top"
-      >
+      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-position="top">
         <el-form-item label="输入用户名" prop="name">
-          <el-input
-            ref="name"
-            placeholder="用户名"
-            size="9"
-            v-model="ruleForm.name"
-            @keyup.enter.native="focusPwd"
-          >
-          </el-input>
+          <el-input ref="name" placeholder="用户名" size="9" v-model="ruleForm.name" @keyup.enter.native="focusPwd"> </el-input>
         </el-form-item>
         <el-form-item label="输入密码" prop="password">
           <el-input
@@ -39,9 +27,7 @@
         </el-form-item>
         <el-form-item style="text-align: right;">
           <el-button type="primary" @click="login('ruleForm')">登 陆</el-button>
-          <el-button type="danger" @click="resetForm('ruleForm')"
-            >重 置</el-button
-          >
+          <el-button type="danger" @click="resetForm('ruleForm')">重 置</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -49,10 +35,7 @@
       <div id="u2569_div"></div>
       <div id="u2570" style="visibility: visible;">
         <p>
-          <span
-            >建议使用：火狐，谷歌 浏览器&nbsp;
-            &nbsp;&nbsp;电脑分辨率：1366*768&nbsp;&nbsp; 效果最佳</span
-          >
+          <span>建议使用：火狐，谷歌 浏览器&nbsp; &nbsp;&nbsp;电脑分辨率：1366*768&nbsp;&nbsp; 效果最佳</span>
         </p>
       </div>
     </div>
