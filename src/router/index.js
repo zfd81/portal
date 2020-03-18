@@ -31,24 +31,6 @@ const routes = [
     component: resolve => require(["@/views/Home"], resolve)
   },
   {
-    path: "/prescription",
-    name: "Prescription",
-    meta: {
-      requireAuth: true,
-      title: "处方"
-    },
-    component: resolve => require(["@/views/prescription/Index"], resolve)
-  },
-  {
-    path: "/prescription/listByDate",
-    name: "ListPrescriptionByDate",
-    meta: {
-      requireAuth: true,
-      title: "查找处方"
-    },
-    component: resolve => require(["@/views/prescription/ListByDate"], resolve)
-  },
-  {
     path: "/about",
     name: "About",
     meta: {

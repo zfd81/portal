@@ -82,7 +82,7 @@ export default {
                     deptName: response.data.DepartmentId
                   }
                 });
-                this.$router.push("/prescription");
+                this.$router.push("/p");
               } else if ((response.status = 204)) {
                 this.$message.error("用户名或密码错误！");
               }
